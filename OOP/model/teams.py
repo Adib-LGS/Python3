@@ -16,7 +16,7 @@ class Teams:
     def from_file(cls, stats_as_file):
         with open(stats_as_file) as file:
             teams_name, wins, losses, sport = file.readline().strip().split('-')
-            return cls(teams_name, wins, losses, sport)
+            return cls(teams_name, int(wins), int(losses), sport)
 
 
     # Class Method - Change fine amount directly in main.py
@@ -26,9 +26,28 @@ class Teams:
     
 
     def get_stats(self):
-        return f"Team: {self.teams_name} || Wins: {self.wins} || Losses: {self.losses} || Catgeory: {self.sport}"
+        winner, looser = self.plural() 
+
+        return f"Team: {self.teams_name} || {winner}: {self.wins} || {looser}: {self.losses} || Catgeory: {self.sport}"
+
 
     # Add fine to teams
     def get_fined(self):
         self.total_fines += self.fine_amount
         print("Fines amount of: ",self.total_fines,"$")
+
+    
+    # Pluralize function depending number of wins/losses
+    def plural(self):
+        winner = 'Win' 
+        if self.wins > 1 :
+            winner = "Wins"
+            print(winner)
+        else : print(winner)
+
+        looser = "Defeat"
+        if self.losses > 1 :
+            looser = "Defeats"
+            print(looser)
+        else: print(looser)
+        return winner,looser
