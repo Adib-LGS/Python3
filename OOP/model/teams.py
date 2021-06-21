@@ -11,6 +11,7 @@ class Teams:
         self.sport = sport
         self.total_fines = 0
     
+    # Class Method - Charge .txt file in main.py
     @classmethod
     def from_file(cls, stats_as_file):
         with open(stats_as_file) as file:
