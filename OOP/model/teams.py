@@ -2,6 +2,7 @@ import os
 
 class Teams:
     
+    number_of_teams = 0
     fine_amount = 10_000
 
     def __init__(self, teams_name, wins, losses, sport):
@@ -10,6 +11,12 @@ class Teams:
         self.losses = losses
         self.sport = sport
         self.total_fines = 0
+
+        if Teams:
+            Teams.number_of_teams += 1
+            
+        if isinstance(self,__class__):
+            self.number_of_teams +=1
     
     # Class Method - Charge .txt file in main.py
     @classmethod
@@ -28,7 +35,7 @@ class Teams:
     def get_stats(self):
         winner, looser = self.plural() 
 
-        return f"Team: {self.teams_name} || {winner}: {self.wins} || {looser}: {self.losses} || Catgeory: {self.sport}"
+        return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || [Catgeory: {self.sport}]"
 
 
     # Add fine to teams
@@ -42,12 +49,8 @@ class Teams:
         winner = 'Win' 
         if self.wins > 1 :
             winner = "Wins"
-            print(winner)
-        else : print(winner)
-
         looser = "Defeat"
         if self.losses > 1 :
             looser = "Defeats"
-            print(looser)
-        else: print(looser)
+        
         return winner,looser
