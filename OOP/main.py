@@ -28,7 +28,7 @@ ekip5.get_fined()
 
 
 # Football sub-class 
-ekip7 = Football('Chief', 7, 7)
+ekip7 = Football('Chief', 7, 1, 2)
 print(ekip7.get_stats())
 
 
@@ -43,6 +43,6 @@ ekip6 = Teams.from_file('OOP/teams.txt')
 print(ekip6.get_stats())
 
 # Count Number of created Teams Global and Specific ones
-print(Teams.number_of_teams)
-print(BasketBall.number_of_teams)
-print(Football.number_of_teams)
+print("[Total of All Teams Created]: ",Teams.number_of_teams)
+print("[Total of BasketBall Teams Created]: ",BasketBall.number_of_teams)
+print("[Total of Football Teams Created]: ",Football.number_of_teams)
