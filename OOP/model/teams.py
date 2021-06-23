@@ -21,9 +21,16 @@ class Teams:
     # Class Method - Charge .txt file in main.py
     @classmethod
     def from_file(cls, stats_as_file):
-        with open(stats_as_file) as file:
-            teams_name, wins, losses, sport = file.readline().strip().split('-')
-            return cls(teams_name, int(wins), int(losses), sport)
+        try:
+            with open(stats_as_file) as file:
+                try:
+                    teams_name, wins, losses, sport = file.readline().strip().split('-')
+                except ValueError:
+                    raise ValueError("You must use '-' between the different values")
+                    
+                return cls(teams_name, int(wins), int(losses), sport)
+        except:
+            raise FileNotFoundError(f"file [{stats_as_file}] not found")
 
 
     # Class Method - Change fine amount directly in main.py
