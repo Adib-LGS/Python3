@@ -10,11 +10,6 @@ Teams.set_fine_amount(25000)
 BasketBall.set_fine_amount(20)
 
 
-# Principal Class
-ekip2 = Teams("LA", 1, 8, "Soccer")
-print(ekip2.get_stats() )
-
-
 # BasketBall sub-class
 ekip1 = BasketBall("Toronto-Raptors", 9, 5)
 print(ekip1.get_stats())
@@ -32,14 +27,8 @@ ekip7 = Football('Chief', 7, 1, 2)
 print(ekip7.get_stats())
 
 
-# Fine amount for some teams
-ekip3 = Teams("Montreal", 14, 2, "Hockey")
-print(ekip3.get_stats())
-ekip3.get_fined()
-
-
 # Add Teams Using .txt file
-ekip6 = Teams.from_file('OOP/teams.txt')
+ekip6 = Football.from_file('OOP/FootBallTeams.txt')
 print(ekip6.get_stats())
 
 # Count Number of created Teams Global and Specific ones

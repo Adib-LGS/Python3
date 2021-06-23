@@ -1,14 +1,19 @@
 import os
+from builtins import isinstance
+
 
 class Teams:
-    
+    GAME_COULD_BE_NULL = False
+
     number_of_teams = 0
     fine_amount = 10_000
 
-    def __init__(self, teams_name, wins, losses, sport):
+    def __init__(self, teams_name, wins, losses, draws = None, sport = None):
         self.teams_name = teams_name
         self.wins = wins
         self.losses = losses
+        if self.GAME_COULD_BE_NULL == True:
+            self.draws = draws
         self.sport = sport
         self.total_fines = 0
 
@@ -24,12 +29,12 @@ class Teams:
         try:
             with open(stats_as_file) as file:
                 try:
-                    teams_name, wins, losses, sport = file.readline().strip().split('-')
+                    teams_name, wins, losses, draws, sport = file.readline().strip().split('-')
                 except ValueError:
                     raise ValueError("You must use '-' between the different values")
-                    
-                return cls(teams_name, int(wins), int(losses), sport)
-        except:
+
+                return cls(teams_name, int(wins), int(losses), int(draws), sport)
+        except FileNotFoundError:
             raise FileNotFoundError(f"file [{stats_as_file}] not found")
 
 
@@ -42,7 +47,11 @@ class Teams:
     def get_stats(self):
         winner, looser = self.plural() 
 
-        return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || [Catgeory: {self.sport}]"
+        if self.GAME_COULD_BE_NULL is True:
+            return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || Draws: {self.draws} || [Catgeory: {self.sport}]"
+
+        else: 
+            return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || [Catgeory: {self.sport}]"
 
 
     # Add fine to teams
