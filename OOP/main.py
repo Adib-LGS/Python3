@@ -26,10 +26,15 @@ ekip5.get_fined()
 ekip7 = Football('Chief', 7, 1, 2)
 print(ekip7.get_stats())
 
+ekip10 = Teams.GAME_COULD_BE_NULL = True
+ekip10 = Teams('Test', 7, 1, 5,'JJJ')
+print(ekip10.get_stats())
+
 
 # Add Teams Using .txt file
 ekip6 = Football.from_file('OOP/FootBallTeams.txt')
 print(ekip6.get_stats())
+
 
 # Count Number of created Teams Global and Specific ones
 print("[Total of All Teams Created]: ",Teams.number_of_teams)

@@ -19,6 +19,7 @@ class Teams:
 
         if Teams:
             Teams.number_of_teams += 1
+            Teams.sport = self.sport
             
         if isinstance(self,__class__):
             self.number_of_teams +=1
@@ -48,10 +49,10 @@ class Teams:
         winner, looser = self.plural() 
 
         if self.GAME_COULD_BE_NULL is True:
-            return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || Draws: {self.draws} || [Catgeory: {self.sport}]"
+            return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || Draws: {self.draws} || [Catgeory: {self.sport.upper()}]"
 
         else: 
-            return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || [Catgeory: {self.sport}]"
+            return f"[Team: {self.teams_name}] || {winner}: {self.wins} || {looser}: {self.losses} || [Catgeory: {self.sport.upper()}]"
 
 
     # Add fine to teams
